@@ -19,6 +19,19 @@ Mysql
 login: tim
 password: tim
 
+Configurer Mysql !
+Sous wamp
+Cliquer sur "Config" puis "My.ini" et décommentez les lignes :
+```
+collation_server=utf8_unicode_ci
+character_set_server=utf8
+```
+Permet de créer toutes les bases en UTF8
+
+Ouvrir le shell et entrer
+```shell
+$ php app/console doctrine:database:create
+```
 
 ## Lancement du projet :
 
