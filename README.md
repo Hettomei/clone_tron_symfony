@@ -33,4 +33,5 @@ Puis pour démarrer le projet :
 $ php ./app/console server:run
 ```
 
-ensuite aller sur http://localhost:8000/app_dev.php/
+ensuite aller sur
+http://localhost:8000/app_dev.php/home/
