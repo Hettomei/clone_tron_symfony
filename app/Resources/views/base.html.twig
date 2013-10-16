@@ -1,20 +1,4 @@
 <!DOCTYPE html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7 ]>
-<html class="ie6" lang="fr">
-<![endif]-->
-<!--[if IE 7 ]>
-<html class="ie7" lang="fr">
-<![endif]-->
-<!--[if IE 8 ]>
-<html class="ie8" lang="fr">
-<![endif]-->
-<!--[if IE 9 ]>
-<html class="ie9" lang="fr">
-<![endif]-->
-<!--[if (gt IE 9)|!(IE)]>
-<html lang="fr">
-<![endif]-->
 <head>
 <meta charset='utf-8'>
 <meta content='width=device-width, initial-scale=1.0' name='viewport'>
@@ -22,6 +6,7 @@
 <meta content='tron, jeux, jeux http' name='keywords'>
 <title>{% block title %}Welcome to TimTron!{% endblock %}</title>
 
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 {% block stylesheets %}{% endblock %}
 
 <link href="{{ asset('favicon.ico') }}" rel="shortcut icon" />
@@ -30,6 +15,8 @@
 </head>
 <body>
 {% block body %}{% endblock %}
+<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>
