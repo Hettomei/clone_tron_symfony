@@ -1,5 +1,23 @@
 tim_tron_homepage:
-    pattern:  /home/
-    defaults: { _controller: TimTronBundle:Home:index }
-    requirements:
-      _method:  GET
+  pattern:  /home/
+  defaults: { _controller: TimTronBundle:Home:index }
+  requirements:
+    _method:  GET
+
+tim_tron_about:
+  pattern:  /home/about/
+  defaults: { _controller: TimTronBundle:Home:about }
+  requirements:
+    _method:  GET
+
+tim_tron_contact:
+  pattern:  /home/contact/
+  defaults: { _controller: TimTronBundle:Home:contact }
+  requirements:
+    _method:  GET
+
+tim_tron_rules:
+  pattern:  /home/rules/
+  defaults: { _controller: TimTronBundle:Home:rules }
+  requirements:
+    _method:  GET

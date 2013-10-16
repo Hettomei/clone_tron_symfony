@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="container">
+  <h1>Fonctionnement</h1>
+
+  <h2>Comment jouer</h2>
+  <ul>
+    <li>Créez un compte</li>
+    <li>Créer une partie OU rejoindre une partie</li>
+    <li>Entrez les 5 prochains coups à jouer</li>
+    <li>Lorsque les 2 joueurs ont saisie leur coups, le tour est lancé</li>
+    </li>Recommencer</li>
+  </ul>
+
+  <h2>Comment gagner ?</h2>
+  <ul>
+    <li>Vous touché quoique ce soit avec la "tête" vous perdez</li>
+    <li>Le joeur restant gagne</li>
+  </ul>
+
+  <h2>Comment une partie est calculée ?</h2>
+  <p>Lorsque les deux joueurs ont entrées leur coup, le serveur calcule la partie.</p>
+  <p>Le joueur Noir commence toujours.</p>
+  <h3>Example</h3>
+  <p>Joueur 1 a enregistré les coups : droite droite haut droite droite.</p>
+  <p>Joueur 2 a enregistré les coups : bas bas gauche bas gauche.</p>
+  <p>Algorithme :</p>
+  <ul>
+    <li>do</li>
+    <li>J1, avance à droite</li>
+    <li>Verif si J1 à touché : les bords, soit même, J2</li>
+    <ul>
+      <li>Si J1 à touché : J1 à Perdu. J2 gagne</li>
+      <li>Sinon, continue</li>
+    </ul>
+    <li>J2, avance en bas</li>
+    <li>Verif si J2 à touché : les bords, soit même, J1</li>
+    <ul>
+      <li>Si J2 à touché : J2 à Perdu. J1 gagne</li>
+      <li>Sinon, continue</li>
+    </ul>
+    <li>loop</li>
+  </ul>
+
+  <h2>Note pour le dev</h2>
+  <p class="well">Expliquer plus clairement...</p>
+</div>
+{% endblock %}
+

@@ -10,4 +10,19 @@ class HomeController extends Controller
     {
         return $this->render('TimTronBundle:Home:index.html.twig');
     }
+
+    public function aboutAction()
+    {
+        return $this->render('TimTronBundle:Home:about.html.twig');
+    }
+
+    public function contactAction()
+    {
+        return $this->render('TimTronBundle:Home:contact.html.twig');
+    }
+
+    public function rulesAction()
+    {
+        return $this->render('TimTronBundle:Home:rules.html.twig');
+    }
 }

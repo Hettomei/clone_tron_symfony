@@ -1,7 +1,18 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 <div class="container">
-  <h1>Hello boy!</h1>
-  <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+  <h1>TimTron</h1>
+  <p>Vous allez jouer à 'Tron' mais version HTML....</p>
+  <h2>Le but</h2>
+  <ul>
+    <li>"Emprisonner" l'autre joueur.</li>
+  </ul>
+  <h2>Comment jouer ?</h2>
+  <ul>
+    <li>Créez un compte</li>
+    <li>Laissez vous guider</li>
+    <li><a href="{{ url('tim_tron_rules') }}">Plus de précision</a></li>
+  </ul>
+
 </div>
 {% endblock %}
