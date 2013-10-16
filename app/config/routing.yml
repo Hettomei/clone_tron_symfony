@@ -1,0 +1,4 @@
+tim_tron:
+    resource: "@TimTronBundle/Resources/config/routing.yml"
+    prefix:   /
+
