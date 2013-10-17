@@ -4,3 +4,7 @@
 .navbar-custom{
   border-radius: 0px;
 }
+p.navbar-text.name{
+  font-weight: bold;
+  color: #FFF;
+}

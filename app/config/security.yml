@@ -3,15 +3,15 @@ security:
     Symfony\Component\Security\Core\User\User: plaintext
 
   role_hierarchy:
-    ROLE_ADMIN:       ROLE_USER
-    ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+    ROLE_ADMIN:       ROLE_JOUEUR
+    ROLE_SUPER_ADMIN: [ROLE_JOUEUR, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
   providers:
     in_memory:
       memory:
         users:
-          user:  { password: p, roles: [ 'ROLE_USER' ] }
-          admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+          user:  { password: p, roles: [ 'ROLE_JOUEUR' ] }
+          admin: { password: p, roles: [ 'ROLE_ADMIN' ] }
 
   firewalls:
     dev:
@@ -31,5 +31,4 @@ security:
         invalidate_session: false
 
   access_control:
-    - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
-    #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+    - { path: ^/game, roles: ROLE_JOUEUR }

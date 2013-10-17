@@ -25,7 +25,8 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {% if app.user %}
-      <li><p class="navbar-text">Bonjour {{ app.user.username }}</p></li>
+      <li><p class="navbar-text name">Bonjour {{ app.user.username }}</p></li>
+      <li><a href="{{ url('tim_tron_game') }}">JOUER</a></li>
       <li><a href="{{ url('logout') }}">Se déconnecter</a></li>
       {% else %}
       <li><a href="{{ url('tim_user_login') }}">Se connecter</a></li>

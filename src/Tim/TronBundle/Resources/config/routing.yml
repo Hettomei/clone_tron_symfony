@@ -21,3 +21,9 @@ tim_tron_rules:
   defaults: { _controller: TimTronBundle:Home:rules }
   requirements:
     _method:  GET
+
+tim_tron_game:
+  pattern:  /game/
+  defaults: { _controller: TimTronBundle:Game:index }
+  requirements:
+    _method:  GET
