@@ -28,9 +28,14 @@ character_set_server=utf8
 ```
 Permet de créer toutes les bases en UTF8
 
-Ouvrir le shell et entrer
+Créer la base de donné "symfony"
 ```shell
 $ php app/console doctrine:database:create
+```
+
+Créer les tables
+```shell
+$ php app/console doctrine:schema:update --force
 ```
 
 ## Lancement du projet :

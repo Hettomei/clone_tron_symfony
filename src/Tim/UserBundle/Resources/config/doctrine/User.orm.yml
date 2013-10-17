@@ -1,0 +1,23 @@
+Tim\UserBundle\Entity\User:
+  type: entity
+  table: null
+  repositoryClass: Tim\UserBundle\Entity\UserRepository
+  fields:
+    id:
+        type: integer
+        id: true
+        generator:
+            strategy: AUTO
+    username:
+        type: string
+        length: 255
+        uniq: true
+    password:
+        type: string
+        length: 255
+    salt:
+        type: string
+        length: 255
+    roles:
+        type: array
+  lifecycleCallbacks: {  }
