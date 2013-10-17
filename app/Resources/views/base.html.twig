@@ -10,11 +10,10 @@
 {% block stylesheets %}{% endblock %}
 
 <link href="{{ asset('favicon.ico') }}" rel="shortcut icon" />
-<link href="" media="screen" rel="stylesheet" type="text/css" />
-<script src="" type="text/javascript"></script>
+<link href="{{ asset('style/style.css') }}" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="navbar navbar-inverse">
+<div class="navbar navbar-inverse navbar-custom">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="{{ url('tim_tron_homepage') }}">PHP, Projet Horriblement Programmé</a>
@@ -29,7 +28,7 @@
   </div>
 </div>
 {% block body %}{% endblock %}
-<div class="navbar navbar-inverse">
+<div class="navbar navbar-inverse navbar-bottom navbar-custom">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="{{ url('tim_tron_homepage') }}">PHP, Projet Horriblement Programmé</a>
