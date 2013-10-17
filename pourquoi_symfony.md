@@ -64,4 +64,4 @@ Sans réfléchir plus loin vu mon petit projet, je garde doctrine.
   toujours en V7.23) .... ?
 
 ##Pourquoi php ?
-Parce que pas le choix. Quel monde de brute.
+Parce que pas le choix. Monde cruel.
