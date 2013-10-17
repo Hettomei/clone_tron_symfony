@@ -48,3 +48,11 @@ $ php ./app/console server:run
 
 ensuite aller sur
 http://localhost:8000/app_dev.php/home/
+
+## POC pour vendredi
+Creer des comptes
+Logger les utilisateurs
+Interdire l'acces à certaine page
+
+POC si possible :
+faire le jeux.
