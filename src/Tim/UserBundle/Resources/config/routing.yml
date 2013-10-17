@@ -1,3 +1,13 @@
 tim_user_login:
   pattern:  /login/
   defaults:  { _controller: TimUserBundle:Security:login }
+
+tim_user_signup:
+  pattern:  /signup/
+  defaults:  { _controller: TimUserBundle:Security:signup }
+
+tim_user_signup_check:
+  pattern:  /signup_check/
+  defaults:  { _controller: TimUserBundle:Security:signupCheck }
+  requirements:
+    _method:  POST

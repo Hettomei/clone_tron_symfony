@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="container">
+
+  {% if error %}
+  <div class="alert alert-danger">
+    {{ error.message }}
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-md-4">
+
+      <form class="form-horizontal" role="form" action="{{ url('tim_user_signup_check') }}" method="post">
+        <div class="form-group">
+          <label for="pseudo" class="col-lg-5 control-label">Pseudo</label>
+          <div class="col-lg-7">
+            <input type="text" class="form-control" id="pseudo" name="_username" placeholder="Pseudo" value="{{ last_username }}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-lg-5 control-label">Password</label>
+          <div class="col-lg-7">
+            <input type="password" class="form-control" id="password" name="_password" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirm_password" class="col-lg-5 control-label">Confirm Password</label>
+          <div class="col-lg-7">
+            <input type="password" class="form-control" id="confirm_password" name="_confirm_password" placeholder="Confirm Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-offset-8 col-lg-4">
+            <button type="submit" class="btn btn-default">Envoyer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+{% endblock %}
