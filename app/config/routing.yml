@@ -1,4 +1,13 @@
 tim_tron:
-    resource: "@TimTronBundle/Resources/config/routing.yml"
-    prefix:   /
+  resource: "@TimTronBundle/Resources/config/routing.yml"
+  prefix:   /
 
+tim_user:
+  resource: "@TimUserBundle/Resources/config/routing.yml"
+  prefix:   /
+
+login_check:
+  pattern:   /login_check
+
+logout:
+  pattern:   /logout
