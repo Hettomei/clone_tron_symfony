@@ -4,6 +4,7 @@ namespace Tim\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use Tim\UserBundle\Entity\User;
 
 class SecurityController extends Controller
 {
@@ -41,22 +42,45 @@ class SecurityController extends Controller
       return $this->redirect($this->generateUrl('tim_tron_homepage'));
     }
 
-    $request = $this->getRequest();
-    $session = $request->getSession();
-
-    return $this->render('TimUserBundle:Security:signup.html.twig', array(
-      // Valeur du précédent nom d'utilisateur entré par l'internaute
-      'last_username' => '',
-      'error'         => null,
-    ));
+    return $this->render(
+      'TimUserBundle:Security:signup.html.twig',
+      [
+        'user' => new User(),
+        'errors' => null
+      ]
+    );
   }
 
   public function signupCheckAction()
   {
-    return $this->render('TimUserBundle:Security:signup.html.twig', array(
-      // Valeur du précédent nom d'utilisateur entré par l'internaute
-      'last_username' => "LOL",
-      'error'         => null,
-    ));
+    $request = $this->getRequest();
+
+    $params = $request->request;
+
+    $user = new User();
+    $user->setUsername($params->get("_username"));
+    $user->setPassword($params->get("_password"));
+    $user->setConfirmPassword($params->get("_confirm_password"));
+    $user->setSalt("");
+    $user->setRoles(["ROLE_JOUEUR"]);
+
+    //Need to use Symfony validator !!
+
+    if($user->is_valid()){
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($user);
+      $em->flush();
+
+      return $this->redirect($this->generateUrl('tim_user_login'));
+    }else{
+      return $this->render(
+        'TimUserBundle:Security:signup.html.twig',
+        [
+          'user' => $user,
+          'errors' => $user->errors_to_s()
+        ]
+      );
+    }
+
   }
 }

@@ -28,6 +28,11 @@ class User implements UserInterface
   /**
    * @var string
    */
+  private $confirm_password;
+
+  /**
+   * @var string
+   */
   private $salt;
 
   /**
@@ -35,6 +40,10 @@ class User implements UserInterface
    */
   private $roles;
 
+  /**
+   * @var array
+   */
+  private $msg_error;
 
   /**
    * Get id
@@ -82,6 +91,18 @@ class User implements UserInterface
     return $this;
   }
 
+  /**
+   * Set confirm_password
+   *
+   * @param string $confirm_password
+   * @return User
+   */
+  public function setConfirmPassword($password)
+  {
+    $this->confirm_password = $password;
+
+    return $this;
+  }
   /**
    * Get password
    *
@@ -140,5 +161,27 @@ class User implements UserInterface
 
   public function eraseCredentials()
   {
+  }
+
+  public function is_valid()
+  {
+    $this->msg_error = [];
+    if(!$this->getUsername()){
+      $this->msg_error[] = "Entrez votre pseudo.";
+    }
+
+    if(!$this->getPassword()){
+      $this->msg_error[] = "Entrez un password";
+    }
+
+    if($this->getPassword() !== $this->confirm_password){
+      $this->msg_error[] = "Password et Confirmation différente.";
+    }
+
+    return count($this->msg_error) === 0;
+  }
+
+  public function errors_to_s(){
+    return implode(" - ", $this->msg_error);
   }
 }
