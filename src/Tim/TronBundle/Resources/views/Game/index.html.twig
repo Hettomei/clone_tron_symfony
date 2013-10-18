@@ -13,6 +13,7 @@
             <th>Joueur 1</th>
             <th>Joueur 2</th>
             <th>Statut</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +34,12 @@
           {% endif %}
 
           <td>{{ game.status }}</td>
+
+          <td>
+            {% if game.can_play(user) %}
+            <a href="{{ url('tim_tron_game_run', { 'id': game.id }) }}" class="btn btn-warning">Jouer</a>
+            {% endif %}
+          </td>
         </tr>
         {% endfor %}
         </tbody>
@@ -40,8 +47,51 @@
 
     </div>
     <div class="col-md-6">
-      <p>Creér une partie</p>
+      <h2>Vos parties</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Joueur 1</th>
+            <th>Joueur 2</th>
+            <th>Statut</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for game in user.games %}
+        <tr>
+          <td>{{ game.id }}</td>
+
+          {% if game.j1 %}
+          <td>{{ game.j1.username }}</td>
+          {% else %}
+          <td> - </td>
+          {% endif %}
+
+          {% if game.j2 %}
+          <td>{{ game.j2.username }}</td>
+          {% else %}
+          <td> - </td>
+          {% endif %}
+
+          <td>{{ game.status }}</td>
+
+          <td>
+            {% if game.can_play(user) %}
+            <a href="{{ url('tim_tron_game_run', { 'id': game.id }) }}" class="btn btn-warning">Jouer</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
     </div>
   </div>
-</div>
-{% endblock %}
+  <div class="row">
+    <form action="{{ url('tim_tron_game_create') }}" method="post">
+      <button type="submit" class="btn btn-default">Créer une partie</button>
+    </div>
+  </div>
+  {% endblock %}

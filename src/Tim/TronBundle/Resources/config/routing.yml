@@ -27,3 +27,15 @@ tim_tron_game:
   defaults: { _controller: TimTronBundle:Game:index }
   requirements:
     _method:  GET
+
+tim_tron_game_create:
+  pattern:  /game/new
+  defaults: { _controller: TimTronBundle:Game:create }
+  requirements:
+    _method:  POST
+
+tim_tron_game_run:
+  pattern:  /game/run/{id}
+  defaults: { _controller: TimTronBundle:Game:run }
+  requirements:
+    _method:  GET

@@ -45,35 +45,18 @@ class User implements UserInterface
    */
   private $msg_error;
 
-  /**
-   * @ORM\OneToMany(targetEntity="Tim\TronBundle\Entity\Game", mappedBy="user")
-   */
   private $games;
 
-  public function __construct()
-  {
-    $this->games = new \Doctrine\Common\Collections\ArrayCollection();
-  }
-
-  /**
-   * Add Games
-   *
-   * @param Tim\TronBundle\Entity\Game $games
-   */
-  public function addGame(\Tim\TronBundle\Entity\Game $game)
+  public function addGame($game)
   {
     $this->games[] = $game;
     return $this;
   }
 
-  /**
-   * Remove games
-   *
-   * @param Tim\TronBundle\Entity\Game $categories
-   */
-  public function removeGame(\Tim\TronBundle\Entity\Game $game)
+  public function addGames($games)
   {
-    $this->games->removeElement($game);
+    $this->games = $games;
+    return $this;
   }
 
   /**
@@ -225,4 +208,9 @@ class User implements UserInterface
   public function errors_to_s(){
     return implode(" - ", $this->msg_error);
   }
+
+  public function __sleep(){
+    return array('id', 'username', 'password', 'salt'); // add your own fields
+  }
+
 }

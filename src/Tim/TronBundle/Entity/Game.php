@@ -22,13 +22,13 @@ class Game
   private $id;
 
   /**
-   * @ORM\ManyToOne(targetEntity="Tim\UserBundle\Entity\User", inversedBy="games")
+   * @ORM\ManyToOne(targetEntity="Tim\UserBundle\Entity\User")
    * @ORM\JoinColumn(nullable=true)
    */
   private $j1;
 
   /**
-   * @ORM\ManyToOne(targetEntity="Tim\UserBundle\Entity\User", inversedBy="games")
+   * @ORM\ManyToOne(targetEntity="Tim\UserBundle\Entity\User")
    * @ORM\JoinColumn(nullable=true)
    */
   private $j2;
@@ -48,7 +48,7 @@ class Game
   private $j2Moves;
 
   /**
-   * @ORM\ManyToOne(targetEntity="Tim\UserBundle\Entity\User", inversedBy="games")
+   * @ORM\ManyToOne(targetEntity="Tim\UserBundle\Entity\User")
    * @ORM\JoinColumn(nullable=true)
    */
   private $winner;
@@ -177,5 +177,17 @@ class Game
     if($this->j1 && $this->j2 && !$this->winner){
       return "Partie en cours";
     }
+  }
+
+  public function can_play($user){
+    if($this->j1 === $user && $this->j2 && !$this->winner){
+      return true;
+    }
+
+    if($this->j1 && $this->j2 === $user && !$this->winner){
+      return true;
+    }
+
+    return false;
   }
 }
