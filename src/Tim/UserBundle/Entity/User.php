@@ -46,6 +46,47 @@ class User implements UserInterface
   private $msg_error;
 
   /**
+   * @ORM\OneToMany(targetEntity="Tim\TronBundle\Entity\Game", mappedBy="user")
+   */
+  private $games;
+
+  public function __construct()
+  {
+    $this->games = new \Doctrine\Common\Collections\ArrayCollection();
+  }
+
+  /**
+   * Add Games
+   *
+   * @param Tim\TronBundle\Entity\Game $games
+   */
+  public function addGame(\Tim\TronBundle\Entity\Game $game)
+  {
+    $this->games[] = $game;
+    return $this;
+  }
+
+  /**
+   * Remove games
+   *
+   * @param Tim\TronBundle\Entity\Game $categories
+   */
+  public function removeGame(\Tim\TronBundle\Entity\Game $game)
+  {
+    $this->games->removeElement($game);
+  }
+
+  /**
+   * Get games
+   *
+   * @return Doctrine\Common\Collections\Collection
+   */
+  public function getGames()
+  {
+    return $this->games;
+  }
+
+  /**
    * Get id
    *
    * @return integer

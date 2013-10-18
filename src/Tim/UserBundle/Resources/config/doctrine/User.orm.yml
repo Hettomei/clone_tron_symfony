@@ -7,7 +7,7 @@ Tim\UserBundle\Entity\User:
       type: integer
       id: true
       generator:
-          strategy: AUTO
+        strategy: AUTO
     username:
       type: string
       length: 255

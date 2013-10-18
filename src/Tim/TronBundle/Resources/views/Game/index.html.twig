@@ -2,7 +2,46 @@
 {% block body %}
 <div class="container">
   <h1>TimTron</h1>
-  <p>Début de la partie !</p>
 
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Liste des parties</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Joueur 1</th>
+            <th>Joueur 2</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for game in games %}
+        <tr>
+          <td>{{ game.id }}</td>
+
+          {% if game.j1 %}
+          <td>{{ game.j1.username }}</td>
+          {% else %}
+          <td> - </td>
+          {% endif %}
+
+          {% if game.j2 %}
+          <td>{{ game.j2.username }}</td>
+          {% else %}
+          <td> - </td>
+          {% endif %}
+
+          <td>{{ game.status }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col-md-6">
+      <p>Creér une partie</p>
+    </div>
+  </div>
 </div>
 {% endblock %}
