@@ -190,4 +190,12 @@ class Game
 
     return false;
   }
+
+  public function can_join($user){
+    if($this->j1 != $user && !$this->j2 && !$this->winner){
+      return true;
+    }
+
+    return false;
+  }
 }

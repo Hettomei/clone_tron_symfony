@@ -39,3 +39,9 @@ tim_tron_game_run:
   defaults: { _controller: TimTronBundle:Game:run }
   requirements:
     _method:  GET
+
+tim_tron_game_join:
+  pattern:  /game/join/{id}
+  defaults: { _controller: TimTronBundle:Game:join }
+  requirements:
+    _method:  POST

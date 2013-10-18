@@ -79,4 +79,34 @@ class GameController extends Controller
       ]
     );
   }
+
+  public function joinAction($id){
+
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('TimTronBundle:Game');
+
+    $game = $repository->find($id);
+    $user = $this->getUser();
+    if (!$game) {
+      throw $this->createNotFoundException('Le jeux n\'existe pas');
+    }
+
+    if(!$game->can_join($user)){
+      throw $this->createNotFoundException("Vous n'avez pas le droit de rejoindre cette partie !");
+    }
+
+
+    $game->setJ2($user);
+
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($game);
+    $em->flush();
+
+    return $this->redirect(
+      $this->generateUrl(
+        'tim_tron_game_run', array('id' => $game->getId()
+      )
+    ));
+  }
 }

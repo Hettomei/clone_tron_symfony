@@ -39,6 +39,11 @@
             {% if game.can_play(user) %}
             <a href="{{ url('tim_tron_game_run', { 'id': game.id }) }}" class="btn btn-warning">Jouer</a>
             {% endif %}
+            {% if game.can_join(user) %}
+            <form action="{{ url('tim_tron_game_join', { 'id': game.id }) }}" method="post">
+              <button type="submit" class="btn btn-info">Rejoindre</button>
+            </form>
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
@@ -92,6 +97,7 @@
   <div class="row">
     <form action="{{ url('tim_tron_game_create') }}" method="post">
       <button type="submit" class="btn btn-default">Créer une partie</button>
-    </div>
+    </form>
   </div>
-  {% endblock %}
+</div>
+{% endblock %}
